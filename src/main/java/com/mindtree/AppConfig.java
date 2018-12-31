@@ -23,7 +23,7 @@ public class AppConfig {
 	private Environment environment;
 
 	@Bean
-	public ViewResolver getViewResolver() {
+	public InternalResourceViewResolver getViewResolver() {
 		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
 		internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
 		internalResourceViewResolver.setSuffix(".jsp");
