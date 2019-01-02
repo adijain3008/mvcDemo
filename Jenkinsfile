@@ -62,20 +62,21 @@ node {
 		currentBuild.result = 'FAILURE'
 	}
    
-	def keyIssue = "AD-13"
     def user = "project.learning12"
     
     stage('JIRA') {
         withEnv(["JIRA_SITE=jira_jenkins"]) {
+		if(currentBuild.result == 'FAILURE') {
 			def testIssue = [fields: [project: [id: '10001'],
-									  summary: 'New Bug.',
-									  description: 'New Bug Created while building project in Jenkins.',
-									  issuetype: [name: 'Bug']]]
+					  summary: 'New Bug.',
+					  description: 'New Bug Created while building project in Jenkins.',
+					  issuetype: [name: 'Bug']]]
 			response = jiraNewIssue issue: testIssue
 			jiraAssignIssue idOrKey: response.data.key, userName: user
-			jiraComment body: 'Solve this issue. Build ID: ' + env.BUILD_ID, issueKey: keyIssue
+			jiraComment body: 'Solve this issue. Build ID: ' + env.BUILD_ID, issueKey: response.data.key
 			echo response.successful.toString()
 			echo response.data.toString()
+		}
         }
     }
 }
