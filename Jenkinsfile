@@ -53,15 +53,14 @@ node('slave1') {
             }"""
             server.download(downloadSpec)
         }
-        
-        stage ('Final deploy') {
-            sh 'scp /var/lib/jenkins/warFiles/mvcDemo.war minduser@104.211.163.253:/opt/tomcat/webapps/'
-        }
-        
 	}catch(err){
 		currentBuild.result = 'FAILURE'
 	}
-   
+}
+node('master'){
+   stage ('Final deploy') {
+            sh 'scp /var/lib/jenkins/warFiles/mvcDemo.war minduser@104.211.163.253:/opt/tomcat/webapps/'
+        }
     def user = "project.learning12"
     
     stage('JIRA') {
