@@ -1,4 +1,4 @@
-node {
+node('slave1') {
 	def mvn_version = 'M3'
 	def server =Artifactory.server 'artf1'
    
