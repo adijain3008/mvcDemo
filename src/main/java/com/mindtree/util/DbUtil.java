@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DbUtil {
 
 	public static final String CLASSNAME = "com.mysql.jdbc.Driver";
-	public static final String URL = "jdbc:mysql://18.219.184.115:3306/spring_user_db?allowPublicKeyRetrieval=true&useSSL=FALSE";
+	public static final String URL = "jdbc:mysql://3.136.84.217:3306/spring_user_db?allowPublicKeyRetrieval=true&useSSL=FALSE";
 	public static final String USERNAME = "root";
 	public static final String PASSWORD = "root";
 
